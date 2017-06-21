@@ -21,11 +21,11 @@ namespace RunningGame.Screens
 
         public MenuScreen()
         {
-            InitializeComponent(); 
+            InitializeComponent();
 
-            Point leftSwordPoint = new Point(startLabel.Location.X - leftSword.Width - 5, 429);
+            Point leftSwordPoint = new Point(startLabel.Location.X - leftSword.Width - 5, 435);
             leftSword.Location = leftSwordPoint;
-            Point rightSwordPoint = new Point(startLabel.Location.X + startLabel.Width + 5, 429);
+            Point rightSwordPoint = new Point(startLabel.Location.X + startLabel.Width, 435);
             rightSword.Location = rightSwordPoint;
 
         }
@@ -124,7 +124,7 @@ namespace RunningGame.Screens
 
                             ins.Location = new Point((form.Width - ins.Width) / 2, (form.Height - ins.Height) / 2);
                             break;
-                            
+
 
                         //If the highscore button is selected
                         case 2:
@@ -153,9 +153,9 @@ namespace RunningGame.Screens
                     if (choiceChanged == false)
                     {
                         choiceChanged = true;
-                        Point leftSwordPoint = new Point(startLabel.Location.X - leftSword.Width - 5, 429);
+                        Point leftSwordPoint = new Point(startLabel.Location.X - leftSword.Width - 5, 435);
                         leftSword.Location = leftSwordPoint;
-                        Point rightSwordPoint = new Point(startLabel.Location.X + startLabel.Width + 5, 429);
+                        Point rightSwordPoint = new Point(startLabel.Location.X + startLabel.Width, 435);
                         rightSword.Location = rightSwordPoint;
                     }
                     break;
@@ -163,9 +163,9 @@ namespace RunningGame.Screens
                     if (choiceChanged == false)
                     {
                         choiceChanged = true;
-                        Point leftSwordPoint = new Point(instructionLabel.Location.X - leftSword.Width - 5, 429);
+                        Point leftSwordPoint = new Point(instructionLabel.Location.X - leftSword.Width - 5, 435);
                         leftSword.Location = leftSwordPoint;
-                        Point rightSwordPoint = new Point(instructionLabel.Location.X + instructionLabel.Width + 5, 429);
+                        Point rightSwordPoint = new Point(instructionLabel.Location.X + instructionLabel.Width, 435);
                         rightSword.Location = rightSwordPoint;
                     }
                     break;
@@ -173,9 +173,9 @@ namespace RunningGame.Screens
                     if (choiceChanged == false)
                     {
                         choiceChanged = true;
-                        Point leftSwordPoint = new Point(highscoreLabel.Location.X - leftSword.Width - 5, 429);
+                        Point leftSwordPoint = new Point(highscoreLabel.Location.X - leftSword.Width - 5, 435);
                         leftSword.Location = leftSwordPoint;
-                        Point rightSwordPoint = new Point(highscoreLabel.Location.X + highscoreLabel.Width + 5, 429);
+                        Point rightSwordPoint = new Point(highscoreLabel.Location.X + highscoreLabel.Width, 435);
                         rightSword.Location = rightSwordPoint;
                     }
                     break;
@@ -183,9 +183,9 @@ namespace RunningGame.Screens
                     if (choiceChanged == false)
                     {
                         choiceChanged = true;
-                        Point leftSwordPoint = new Point(exitLabel.Location.X - leftSword.Width - 5, 429);
+                        Point leftSwordPoint = new Point(exitLabel.Location.X - leftSword.Width - 5, 435);
                         leftSword.Location = leftSwordPoint;
-                        Point rightSwordPoint = new Point(exitLabel.Location.X + exitLabel.Width + 5, 429);
+                        Point rightSwordPoint = new Point(exitLabel.Location.X + exitLabel.Width, 435);
                         rightSword.Location = rightSwordPoint;
                     }
                     break;

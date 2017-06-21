@@ -40,6 +40,9 @@ namespace RunningGame.Screens
         bool leftArrowDown, rightArrowDown, spaceDown;
         string currentDirection = null;
 
+        SolidBrush brush = new SolidBrush(Color.SandyBrown);
+        Pen blackPen = new Pen(Color.Black);
+
         public GameScreen()
         {
             InitializeComponent();
@@ -57,6 +60,7 @@ namespace RunningGame.Screens
             Thread.Sleep(500);
             gameTimer.Enabled = true;
 
+            #region adding images to lists
             //run images (I named them backwards ): )
             runList.Add(Properties.Resources.run8);
             runList.Add(Properties.Resources.run7);
@@ -87,6 +91,7 @@ namespace RunningGame.Screens
             fallList.Add(Properties.Resources.fall2);
             fallList.Add(Properties.Resources.fall3);
             fallList.Add(Properties.Resources.fall4);
+            #endregion
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -202,23 +207,26 @@ namespace RunningGame.Screens
                 
             }
             #endregion
-
-            foreach (Platform p in platformList)
+            if (reverseJump == true)
             {
-                p.Move();
-                if (reverseJump == true)
+                platformYChange += platformYAcceleration;
+                platformYAcceleration--;
+
+                foreach (Platform p in platformList)
                 {
-                    platformYChange += platformYAcceleration;
                     p.y = p.initialY + platformYChange;
-                    platformYAcceleration--;
 
                     if (p.y <= p.initialY)
                     {
                         p.y = p.initialY;
                         reverseJump = false;
                     }
-
                 }
+            }
+
+            foreach (Platform p in platformList)
+            {
+                p.Move();
 
                 p.speed = platformSpeed;
 
@@ -243,11 +251,11 @@ namespace RunningGame.Screens
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
-            SolidBrush brush = new SolidBrush(Color.SandyBrown);
             //e.Graphics.FillRectangle(brush, Convert.ToInt16(player.x), Convert.ToInt16(player.y), player.width, player.height);
             foreach (Platform p in platformList)
             {
                 e.Graphics.FillRectangle(brush, p.x, p.y, p.xSize, p.ySize);
+                e.Graphics.DrawRectangle(blackPen, p.x - 1, p.y - 1, p.xSize + 1, p.ySize + 1);
             }
         }
 
@@ -350,6 +358,7 @@ namespace RunningGame.Screens
                 else
                 {
                     //player.HalfJump();
+                    player.jump();
                     reverseJump = true;
                     platformYAcceleration = 15;
                     platformYChange = 0;

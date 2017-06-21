@@ -104,6 +104,10 @@ namespace RunningGame.Classes
                 yChange += yAcceleration;
                 yAcceleration--;
             }
+            else if (GameScreen.inAir == true && GameScreen.reverseJump == true)
+            {
+                yAcceleration--;
+            }
         }
 
     }

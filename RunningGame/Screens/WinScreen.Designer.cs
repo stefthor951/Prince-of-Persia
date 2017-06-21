@@ -157,6 +157,7 @@
             this.Name = "WinScreen";
             this.Size = new System.Drawing.Size(1000, 400);
             this.Load += new System.EventHandler(this.WinScreen_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.WinScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.WinScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.WinScreen_PreviewKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.rightSword)).EndInit();

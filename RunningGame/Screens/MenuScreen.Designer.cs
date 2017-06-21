@@ -44,44 +44,44 @@
             // startLabel
             // 
             this.startLabel.BackColor = System.Drawing.Color.Transparent;
-            this.startLabel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startLabel.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.startLabel.Location = new System.Drawing.Point(78, 423);
             this.startLabel.Name = "startLabel";
-            this.startLabel.Size = new System.Drawing.Size(126, 36);
+            this.startLabel.Size = new System.Drawing.Size(128, 36);
             this.startLabel.TabIndex = 0;
             this.startLabel.Text = "START";
             // 
             // instructionLabel
             // 
             this.instructionLabel.BackColor = System.Drawing.Color.Transparent;
-            this.instructionLabel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.instructionLabel.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.instructionLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.instructionLabel.Location = new System.Drawing.Point(260, 423);
             this.instructionLabel.Name = "instructionLabel";
-            this.instructionLabel.Size = new System.Drawing.Size(209, 35);
+            this.instructionLabel.Size = new System.Drawing.Size(196, 35);
             this.instructionLabel.TabIndex = 1;
             this.instructionLabel.Text = "CONTROLS";
             // 
             // highscoreLabel
             // 
             this.highscoreLabel.BackColor = System.Drawing.Color.Transparent;
-            this.highscoreLabel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.highscoreLabel.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highscoreLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.highscoreLabel.Location = new System.Drawing.Point(525, 423);
             this.highscoreLabel.Name = "highscoreLabel";
-            this.highscoreLabel.Size = new System.Drawing.Size(249, 36);
+            this.highscoreLabel.Size = new System.Drawing.Size(230, 36);
             this.highscoreLabel.TabIndex = 2;
             this.highscoreLabel.Text = "HIGHSCORES";
             // 
             // exitLabel
             // 
             this.exitLabel.BackColor = System.Drawing.Color.Transparent;
-            this.exitLabel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitLabel.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.exitLabel.Location = new System.Drawing.Point(830, 423);
             this.exitLabel.Name = "exitLabel";
-            this.exitLabel.Size = new System.Drawing.Size(93, 35);
+            this.exitLabel.Size = new System.Drawing.Size(97, 35);
             this.exitLabel.TabIndex = 3;
             this.exitLabel.Text = "EXIT";
             // 

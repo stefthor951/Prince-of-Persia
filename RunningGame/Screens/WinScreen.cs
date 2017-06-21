@@ -23,6 +23,11 @@ namespace RunningGame.Screens
 
         int index1, index2, index3, selected = 4, lastSelected;
 
+        private void WinScreen_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void WinScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             lastSelected = selected;
