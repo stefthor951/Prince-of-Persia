@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using RunningGame.Classes;
 using System.Windows.Forms;
 using System.Threading;
+using System.Media;
 
 namespace RunningGame.Screens
 {
@@ -389,7 +390,11 @@ namespace RunningGame.Screens
             #region player collision with bottom
             if (player.y > this.Height + 100)
             {
+                SoundPlayer death = new SoundPlayer(Properties.Resources.scream);
+                death.Play();
+                Thread.Sleep(500);
                 gameTimer.Stop();
+
                 Form form = this.FindForm();
                 Highscore hs = new Highscore(null, Convert.ToString(Form1.currentScore));
                 if (hs.checkHighscore(hs) == true)

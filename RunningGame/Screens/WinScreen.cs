@@ -15,6 +15,9 @@ namespace RunningGame.Screens
         Boolean leftArrowDown, downArrowDown, rightArrowDown, upArrowDown, spaceDown;
         Point leftSwordPoint;
         Point rightSwordPoint;
+        string left, middle, right;
+        string alphabet = "abcdefghijklmnopqrstuvwxyz";
+        int index;
 
         private void WinScreen_Load(object sender, EventArgs e)
         {
@@ -88,92 +91,101 @@ namespace RunningGame.Screens
                 }
             }
 
+            #region logan's code -functional but bad
             switch (selected)
             {
+                #region letter cases old
+                //case 0:
+                //    nameText1.ForeColor = Color.Red;
+                //    leftSwordPoint = new Point(-100, 337);
+                //    leftSword.Location = leftSwordPoint;
+                //    rightSwordPoint = new Point(-100, 337);
+                //    rightSword.Location = rightSwordPoint;
+
+                //    if (upArrowDown == true)
+                //    {
+                //        index1++;
+
+                //        if (index1 == 26)
+                //        {
+                //            index1 = 0;
+                //        }
+                //    }
+
+                //    if (downArrowDown == true)
+                //    {
+                //        index1--;
+
+                //        if (index1 == -1)
+                //        {
+                //            index1 = 25;
+                //        }
+                //    }
+                //    break;
+
+                //case 1:
+                //    nameText2.ForeColor = Color.Red;
+                //    leftSwordPoint = new Point(-100, 337);
+                //    leftSword.Location = leftSwordPoint;
+                //    rightSwordPoint = new Point(-100, 337);
+                //    rightSword.Location = rightSwordPoint;
+
+                //    if (upArrowDown == true)
+                //    {
+                //        index2++;
+
+                //        if (index2 == 26)
+                //        {
+                //            index2 = 0;
+                //        }
+                //    }
+
+                //    if (downArrowDown == true)
+                //    {
+                //        index2--;
+
+                //        if (index2 == -1)
+                //        {
+                //            index2 = 25;
+                //        }
+                //    }
+                //    break;
+
+                //case 2:
+                //    nameText3.ForeColor = Color.Red;
+                //    leftSwordPoint = new Point(-100, 337);
+                //    leftSword.Location = leftSwordPoint;
+                //    rightSwordPoint = new Point(-100, 337);
+                //    rightSword.Location = rightSwordPoint;
+
+                //    if (upArrowDown == true)
+                //    {
+                //        index3++;
+
+                //        if (index3 == 26)
+                //        {
+                //            index3 = 0;
+                //        }
+                //    }
+
+                //    if (downArrowDown == true)
+                //    {
+                //        index3--;
+
+                //        if (index3 == -1)
+                //        {
+                //            index3 = 25;
+                //        }
+                //    }
+                //    break;
+                #endregion
                 case 0:
-                    nameText1.ForeColor = Color.Red;
-                    leftSwordPoint = new Point(-100, 337);
-                    leftSword.Location = leftSwordPoint;
-                    rightSwordPoint = new Point(-100, 337);
-                    rightSword.Location = rightSwordPoint;
 
-                    if (upArrowDown == true)
-                    {
-                        index1++;
-
-                        if (index1 == 26)
-                        {
-                            index1 = 0;
-                        }
-                    }
-
-                    if (downArrowDown == true)
-                    {
-                        index1--;
-
-                        if (index1 == -1)
-                        {
-                            index1 = 25;
-                        }
-                    }
                     break;
-
                 case 1:
-                    nameText2.ForeColor = Color.Red;
-                    leftSwordPoint = new Point(-100, 337);
-                    leftSword.Location = leftSwordPoint;
-                    rightSwordPoint = new Point(-100, 337);
-                    rightSword.Location = rightSwordPoint;
-
-                    if (upArrowDown == true)
-                    {
-                        index2++;
-
-                        if (index2 == 26)
-                        {
-                            index2 = 0;
-                        }
-                    }
-
-                    if (downArrowDown == true)
-                    {
-                        index2--;
-
-                        if (index2 == -1)
-                        {
-                            index2 = 25;
-                        }
-                    }
                     break;
-
                 case 2:
-                    nameText3.ForeColor = Color.Red;
-                    leftSwordPoint = new Point(-100, 337);
-                    leftSword.Location = leftSwordPoint;
-                    rightSwordPoint = new Point(-100, 337);
-                    rightSword.Location = rightSwordPoint;
-
-                    if (upArrowDown == true)
-                    {
-                        index3++;
-
-                        if (index3 == 26)
-                        {
-                            index3 = 0;
-                        }
-                    }
-
-                    if (downArrowDown == true)
-                    {
-                        index3--;
-
-                        if (index3 == -1)
-                        {
-                            index3 = 25;
-                        }
-                    }
                     break;
-
                 case 3:
 
                     leftSwordPoint = new Point(menuLabel.Location.X - leftSword.Width - 5, 337);
@@ -498,6 +510,7 @@ namespace RunningGame.Screens
                     nameText3.Text = "Z";
                     break;
             }
+            #endregion
         }
 
         private void WinScreen_KeyUp(object sender, KeyEventArgs e)
