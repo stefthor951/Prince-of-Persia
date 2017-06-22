@@ -14,20 +14,15 @@ namespace RunningGame.Screens
     {
         int index = 0;
         bool leftKeyDown, rightKeyDown, choiceChanged = false;
-        Graphics g;
-        List<Image> redFireList = new List<Image>();
-        List<Image> blackFireList = new List<Image>();
-        Pen whitePen;
+        //List<Image> redFireList = new List<Image>();
+        //List<Image> blackFireList = new List<Image>();
 
         public MenuScreen()
         {
             InitializeComponent();
 
-            Point leftSwordPoint = new Point(startLabel.Location.X - leftSword.Width - 5, 435);
-            leftSword.Location = leftSwordPoint;
-            Point rightSwordPoint = new Point(startLabel.Location.X + startLabel.Width, 435);
-            rightSword.Location = rightSwordPoint;
-
+            MoveSwords(startLabel);
+            
         }
 
         private void MenuScreen_Load(object sender, EventArgs e)
@@ -153,43 +148,42 @@ namespace RunningGame.Screens
                     if (choiceChanged == false)
                     {
                         choiceChanged = true;
-                        Point leftSwordPoint = new Point(startLabel.Location.X - leftSword.Width - 5, 435);
-                        leftSword.Location = leftSwordPoint;
-                        Point rightSwordPoint = new Point(startLabel.Location.X + startLabel.Width, 435);
-                        rightSword.Location = rightSwordPoint;
+                        MoveSwords(startLabel);
                     }
                     break;
                 case 1:
                     if (choiceChanged == false)
                     {
                         choiceChanged = true;
-                        Point leftSwordPoint = new Point(instructionLabel.Location.X - leftSword.Width - 5, 435);
-                        leftSword.Location = leftSwordPoint;
-                        Point rightSwordPoint = new Point(instructionLabel.Location.X + instructionLabel.Width, 435);
-                        rightSword.Location = rightSwordPoint;
+                        MoveSwords(instructionLabel);
                     }
                     break;
                 case 2:
                     if (choiceChanged == false)
                     {
                         choiceChanged = true;
-                        Point leftSwordPoint = new Point(highscoreLabel.Location.X - leftSword.Width - 5, 435);
-                        leftSword.Location = leftSwordPoint;
-                        Point rightSwordPoint = new Point(highscoreLabel.Location.X + highscoreLabel.Width, 435);
-                        rightSword.Location = rightSwordPoint;
+                        MoveSwords(highscoreLabel);
                     }
                     break;
                 case 3:
                     if (choiceChanged == false)
                     {
                         choiceChanged = true;
-                        Point leftSwordPoint = new Point(exitLabel.Location.X - leftSword.Width - 5, 435);
-                        leftSword.Location = leftSwordPoint;
-                        Point rightSwordPoint = new Point(exitLabel.Location.X + exitLabel.Width, 435);
-                        rightSword.Location = rightSwordPoint;
+                        MoveSwords(exitLabel);
                     }
                     break;
             }
+        }
+
+        public void MoveSwords(Label l)
+        {
+            Point leftSwordPoint;
+            Point rightSwordPoint;
+
+            leftSwordPoint = new Point(l.Location.X - leftSword.Width - 5, 435);
+            leftSword.Location = leftSwordPoint;
+            rightSwordPoint = new Point(l.Location.X + l.Width + 5, 435);
+            rightSword.Location = rightSwordPoint;
         }
     }
 }

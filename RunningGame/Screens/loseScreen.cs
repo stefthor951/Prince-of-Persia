@@ -19,12 +19,9 @@ namespace RunningGame.Screens
         public LoseScreen()
         {
             InitializeComponent();
-            
 
-            Point leftSwordPoint = new Point(restartLabel.Location.X - leftSword.Width - 5, 314);
-            leftSword.Location = leftSwordPoint;
-            Point rightSwordPoint = new Point(restartLabel.Location.X + restartLabel.Width + 5, 314);
-            rightSword.Location = rightSwordPoint;
+            MoveSwords(restartLabel);
+
         }
 
         private void LoseScreen_Load(object sender, EventArgs e)
@@ -130,23 +127,28 @@ namespace RunningGame.Screens
                     if (choiceChanged == false)
                     {
                         choiceChanged = true;
-                        Point leftSwordPoint = new Point(restartLabel.Location.X - leftSword.Width - 5, 314);
-                        leftSword.Location = leftSwordPoint;
-                        Point rightSwordPoint = new Point(restartLabel.Location.X + restartLabel.Width + 5, 314);
-                        rightSword.Location = rightSwordPoint;
+                        MoveSwords(restartLabel);
                     }
                     break;
                 case 1:
                     if (choiceChanged == false)
                     {
                         choiceChanged = true;
-                        Point leftSwordPoint = new Point(menuLabel.Location.X - leftSword.Width - 5, 314);
-                        leftSword.Location = leftSwordPoint;
-                        Point rightSwordPoint = new Point(menuLabel.Location.X + menuLabel.Width + 5, 314);
-                        rightSword.Location = rightSwordPoint;
+                        MoveSwords(menuLabel);
                     }
                     break;
             }
+        }
+
+        public void MoveSwords(Label l)
+        {
+            Point leftSwordPoint;
+            Point rightSwordPoint;
+
+            leftSwordPoint = new Point(l.Location.X - leftSword.Width - 5, 435);
+            leftSword.Location = leftSwordPoint;
+            rightSwordPoint = new Point(l.Location.X + l.Width + 5, 435);
+            rightSword.Location = rightSwordPoint;
         }
 
     }
