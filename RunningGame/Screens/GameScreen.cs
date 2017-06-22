@@ -26,7 +26,7 @@ namespace RunningGame.Screens
         public static bool inAir = true, reverseJump = false;
 
         List<Platform> platformList = new List<Platform>();
-        int platformSpacing, spawnSpacing = 500; //change back to 175
+        int platformSpacing, spawnSpacing = 175; //change back to 175
         string currentPlatformType, nextPlatformType;
         public static int platformYChange, platformYAcceleration;
         int platformSpeed = 5;

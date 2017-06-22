@@ -83,6 +83,16 @@ namespace RunningGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap edited_joystick {
+            get {
+                object obj = ResourceManager.GetObject("edited_joystick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fall1 {
             get {
                 object obj = ResourceManager.GetObject("fall1", resourceCulture);

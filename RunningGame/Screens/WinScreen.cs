@@ -13,18 +13,27 @@ namespace RunningGame.Screens
     public partial class WinScreen : UserControl
     {
         Boolean leftArrowDown, downArrowDown, rightArrowDown, upArrowDown, spaceDown;
-        Point leftSwordPoint;
-        Point rightSwordPoint;
-        string left, middle, right;
-        string alphabet = "abcdefghijklmnopqrstuvwxyz";
+        
+        string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        List<string> letterStrings = new List<string>();
+        string leftString, middleString, rightString;
         int index;
+
+        List<Label> labelList = new List<Label>();
 
         private void WinScreen_Load(object sender, EventArgs e)
         {
             scoreOutput.Text = "You ran " + Form1.currentScore + " metres!";
+            letterStrings.Add(leftString);
+            letterStrings.Add(middleString);
+            letterStrings.Add(rightString);
+
+            labelList.Add(nameText1);
+            labelList.Add(nameText2);
+            labelList.Add(nameText3);
         }
 
-        int index1, index2, index3, selected = 4, lastSelected;
+        int selected = 4, lastSelected;
 
         private void WinScreen_Paint(object sender, PaintEventArgs e)
         {
@@ -94,104 +103,24 @@ namespace RunningGame.Screens
             #region logan's code -functional but bad
             switch (selected)
             {
-                #region letter cases old
-                //case 0:
-                //    nameText1.ForeColor = Color.Red;
-                //    leftSwordPoint = new Point(-100, 337);
-                //    leftSword.Location = leftSwordPoint;
-                //    rightSwordPoint = new Point(-100, 337);
-                //    rightSword.Location = rightSwordPoint;
-
-                //    if (upArrowDown == true)
-                //    {
-                //        index1++;
-
-                //        if (index1 == 26)
-                //        {
-                //            index1 = 0;
-                //        }
-                //    }
-
-                //    if (downArrowDown == true)
-                //    {
-                //        index1--;
-
-                //        if (index1 == -1)
-                //        {
-                //            index1 = 25;
-                //        }
-                //    }
-                //    break;
-
-                //case 1:
-                //    nameText2.ForeColor = Color.Red;
-                //    leftSwordPoint = new Point(-100, 337);
-                //    leftSword.Location = leftSwordPoint;
-                //    rightSwordPoint = new Point(-100, 337);
-                //    rightSword.Location = rightSwordPoint;
-
-                //    if (upArrowDown == true)
-                //    {
-                //        index2++;
-
-                //        if (index2 == 26)
-                //        {
-                //            index2 = 0;
-                //        }
-                //    }
-
-                //    if (downArrowDown == true)
-                //    {
-                //        index2--;
-
-                //        if (index2 == -1)
-                //        {
-                //            index2 = 25;
-                //        }
-                //    }
-                //    break;
-
-                //case 2:
-                //    nameText3.ForeColor = Color.Red;
-                //    leftSwordPoint = new Point(-100, 337);
-                //    leftSword.Location = leftSwordPoint;
-                //    rightSwordPoint = new Point(-100, 337);
-                //    rightSword.Location = rightSwordPoint;
-
-                //    if (upArrowDown == true)
-                //    {
-                //        index3++;
-
-                //        if (index3 == 26)
-                //        {
-                //            index3 = 0;
-                //        }
-                //    }
-
-                //    if (downArrowDown == true)
-                //    {
-                //        index3--;
-
-                //        if (index3 == -1)
-                //        {
-                //            index3 = 25;
-                //        }
-                //    }
-                //    break;
-                #endregion
                 case 0:
 
+                    MoveSwords(null);
+                    LetterShift(0);
                     break;
                 case 1:
+
+                    MoveSwords(null);
+                    LetterShift(1);
                     break;
                 case 2:
+
+                    MoveSwords(null);
+                    LetterShift(2);
                     break;
                 case 3:
 
-                    leftSwordPoint = new Point(menuLabel.Location.X - leftSword.Width - 5, 337);
-                    leftSword.Location = leftSwordPoint;
-                    rightSwordPoint = new Point(menuLabel.Location.X + menuLabel.Width + 5, 337);
-                    rightSword.Location = rightSwordPoint;
+                    MoveSwords(menuLabel);
 
                     if (spaceDown == true)
                     {
@@ -217,10 +146,7 @@ namespace RunningGame.Screens
 
                 case 4:
 
-                    leftSwordPoint = new Point(restartLabel.Location.X - leftSword.Width - 5, 337);
-                    leftSword.Location = leftSwordPoint;
-                    rightSwordPoint = new Point(restartLabel.Location.X + restartLabel.Width + 5, 337);
-                    rightSword.Location = rightSwordPoint;
+                    MoveSwords(restartLabel);
 
                     if (spaceDown == true)
                     {
@@ -264,252 +190,6 @@ namespace RunningGame.Screens
                         break;
                 }
             }
-
-            switch (index1)
-            {
-                case 0:
-                    nameText1.Text = "A";
-                    break;
-                case 1:
-                    nameText1.Text = "B";
-                    break;
-                case 2:
-                    nameText1.Text = "C";
-                    break;
-                case 3:
-                    nameText1.Text = "D";
-                    break;
-                case 4:
-                    nameText1.Text = "E";
-                    break;
-                case 5:
-                    nameText1.Text = "F";
-                    break;
-                case 6:
-                    nameText1.Text = "G";
-                    break;
-                case 7:
-                    nameText1.Text = "H";
-                    break;
-                case 8:
-                    nameText1.Text = "I";
-                    break;
-                case 9:
-                    nameText1.Text = "J";
-                    break;
-                case 10:
-                    nameText1.Text = "K";
-                    break;
-                case 11:
-                    nameText1.Text = "L";
-                    break;
-                case 12:
-                    nameText1.Text = "M";
-                    break;
-                case 13:
-                    nameText1.Text = "N";
-                    break;
-                case 14:
-                    nameText1.Text = "O";
-                    break;
-                case 15:
-                    nameText1.Text = "P";
-                    break;
-                case 16:
-                    nameText1.Text = "Q";
-                    break;
-                case 17:
-                    nameText1.Text = "R";
-                    break;
-                case 18:
-                    nameText1.Text = "S";
-                    break;
-                case 19:
-                    nameText1.Text = "T";
-                    break;
-                case 20:
-                    nameText1.Text = "U";
-                    break;
-                case 21:
-                    nameText1.Text = "V";
-                    break;
-                case 22:
-                    nameText1.Text = "W";
-                    break;
-                case 23:
-                    nameText1.Text = "X";
-                    break;
-                case 24:
-                    nameText1.Text = "Y";
-                    break;
-                case 25:
-                    nameText1.Text = "Z";
-                    break;
-            }
-
-            switch (index2)
-            {
-                case 0:
-                    nameText2.Text = "A";
-                    break;
-                case 1:
-                    nameText2.Text = "B";
-                    break;
-                case 2:
-                    nameText2.Text = "C";
-                    break;
-                case 3:
-                    nameText2.Text = "D";
-                    break;
-                case 4:
-                    nameText2.Text = "E";
-                    break;
-                case 5:
-                    nameText2.Text = "F";
-                    break;
-                case 6:
-                    nameText2.Text = "G";
-                    break;
-                case 7:
-                    nameText2.Text = "H";
-                    break;
-                case 8:
-                    nameText2.Text = "I";
-                    break;
-                case 9:
-                    nameText2.Text = "J";
-                    break;
-                case 10:
-                    nameText2.Text = "K";
-                    break;
-                case 11:
-                    nameText2.Text = "L";
-                    break;
-                case 12:
-                    nameText2.Text = "M";
-                    break;
-                case 13:
-                    nameText2.Text = "N";
-                    break;
-                case 14:
-                    nameText2.Text = "O";
-                    break;
-                case 15:
-                    nameText2.Text = "P";
-                    break;
-                case 16:
-                    nameText2.Text = "Q";
-                    break;
-                case 17:
-                    nameText2.Text = "R";
-                    break;
-                case 18:
-                    nameText2.Text = "S";
-                    break;
-                case 19:
-                    nameText2.Text = "T";
-                    break;
-                case 20:
-                    nameText2.Text = "U";
-                    break;
-                case 21:
-                    nameText2.Text = "V";
-                    break;
-                case 22:
-                    nameText2.Text = "W";
-                    break;
-                case 23:
-                    nameText2.Text = "X";
-                    break;
-                case 24:
-                    nameText2.Text = "Y";
-                    break;
-                case 25:
-                    nameText2.Text = "Z";
-                    break;
-            }
-
-            switch (index3)
-            {
-                case 0:
-                    nameText3.Text = "A";
-                    break;
-                case 1:
-                    nameText3.Text = "B";
-                    break;
-                case 2:
-                    nameText3.Text = "C";
-                    break;
-                case 3:
-                    nameText3.Text = "D";
-                    break;
-                case 4:
-                    nameText3.Text = "E";
-                    break;
-                case 5:
-                    nameText3.Text = "F";
-                    break;
-                case 6:
-                    nameText3.Text = "G";
-                    break;
-                case 7:
-                    nameText3.Text = "H";
-                    break;
-                case 8:
-                    nameText3.Text = "I";
-                    break;
-                case 9:
-                    nameText3.Text = "J";
-                    break;
-                case 10:
-                    nameText3.Text = "K";
-                    break;
-                case 11:
-                    nameText3.Text = "L";
-                    break;
-                case 12:
-                    nameText3.Text = "M";
-                    break;
-                case 13:
-                    nameText3.Text = "N";
-                    break;
-                case 14:
-                    nameText3.Text = "O";
-                    break;
-                case 15:
-                    nameText3.Text = "P";
-                    break;
-                case 16:
-                    nameText3.Text = "Q";
-                    break;
-                case 17:
-                    nameText3.Text = "R";
-                    break;
-                case 18:
-                    nameText3.Text = "S";
-                    break;
-                case 19:
-                    nameText3.Text = "T";
-                    break;
-                case 20:
-                    nameText3.Text = "U";
-                    break;
-                case 21:
-                    nameText3.Text = "V";
-                    break;
-                case 22:
-                    nameText3.Text = "W";
-                    break;
-                case 23:
-                    nameText3.Text = "X";
-                    break;
-                case 24:
-                    nameText3.Text = "Y";
-                    break;
-                case 25:
-                    nameText3.Text = "Z";
-                    break;
-            }
             #endregion
         }
 
@@ -542,11 +222,53 @@ namespace RunningGame.Screens
         public WinScreen()
         {
             InitializeComponent();
+            MoveSwords(restartLabel);
+        }
 
-            Point leftSwordPoint = new Point(restartLabel.Location.X - leftSword.Width - 5, 337);
-            leftSword.Location = leftSwordPoint;
-            Point rightSwordPoint = new Point(restartLabel.Location.X + restartLabel.Width + 5, 337);
-            rightSword.Location = rightSwordPoint;
+        public void LetterShift(int i)
+        {
+            if (upArrowDown)
+            {
+                index--;
+                if (index == -1)
+                {
+                    index = 25;
+                }
+                letterStrings[i] = alphabet.Substring(index, 1);
+                labelList[i].Text = letterStrings[i];
+            }
+            if (downArrowDown)
+            {
+                index++;
+                if (index == 26)
+                {
+                    index = 0;
+                }
+                letterStrings[i] = alphabet.Substring(index, 1);
+                labelList[i].Text = letterStrings[i];
+            }
+            labelList[i].ForeColor = Color.Red;
+        }
+
+        public void MoveSwords(Label l)
+        {
+            Point leftSwordPoint;
+            Point rightSwordPoint;
+
+            if (l == null)
+            {
+                leftSwordPoint = new Point(-100, 337);
+                leftSword.Location = leftSwordPoint;
+                rightSwordPoint = new Point(-100, 337);
+                rightSword.Location = rightSwordPoint;
+            }
+            else
+            {
+                leftSwordPoint = new Point(l.Location.X - leftSword.Width - 5, 337);
+                leftSword.Location = leftSwordPoint;
+                rightSwordPoint = new Point(l.Location.X + l.Width + 5, 337);
+                rightSword.Location = rightSwordPoint;
+            }
         }
     }
 }

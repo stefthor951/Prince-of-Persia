@@ -11,7 +11,7 @@ namespace RunningGame.Classes
         public int x, y, speed, xSize, ySize, initialY, counter = 0, yChange = 0, yAcceleration;
         public string type;
         bool reverseJump = false;
-        int platformWidth = 850;
+        int platformWidth = 1000;
 
         public Platform(int _x, int _y, int _speed, int _xSize, int _ySize)
         {
