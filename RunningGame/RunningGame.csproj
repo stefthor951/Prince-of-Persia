@@ -87,6 +87,12 @@
     <Compile Include="Screens\MenuScreen.Designer.cs">
       <DependentUpon>MenuScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\PauseScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\PauseScreen.Designer.cs">
+      <DependentUpon>PauseScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\WinScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\MenuScreen.resx">
       <DependentUpon>MenuScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\PauseScreen.resx">
+      <DependentUpon>PauseScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\WinScreen.resx">
       <DependentUpon>WinScreen.cs</DependentUpon>
