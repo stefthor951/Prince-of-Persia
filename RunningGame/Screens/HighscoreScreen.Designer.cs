@@ -76,11 +76,11 @@
             // 
             this.highscoreLabel.AutoSize = true;
             this.highscoreLabel.BackColor = System.Drawing.Color.Transparent;
-            this.highscoreLabel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.highscoreLabel.Font = new System.Drawing.Font("Segoe Script", 21.75F);
             this.highscoreLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.highscoreLabel.Location = new System.Drawing.Point(343, 331);
             this.highscoreLabel.Name = "highscoreLabel";
-            this.highscoreLabel.Size = new System.Drawing.Size(215, 40);
+            this.highscoreLabel.Size = new System.Drawing.Size(214, 46);
             this.highscoreLabel.TabIndex = 12;
             this.highscoreLabel.Text = "MAIN MENU";
             // 

@@ -73,6 +73,26 @@ namespace RunningGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buttonBlack {
+            get {
+                object obj = ResourceManager.GetObject("buttonBlack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonGreen {
+            get {
+                object obj = ResourceManager.GetObject("buttonGreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dead {
             get {
                 object obj = ResourceManager.GetObject("dead", resourceCulture);
@@ -126,6 +146,16 @@ namespace RunningGame.Properties {
         internal static System.Drawing.Bitmap fall4 {
             get {
                 object obj = ResourceManager.GetObject("fall4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap joyStick {
+            get {
+                object obj = ResourceManager.GetObject("joyStick", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

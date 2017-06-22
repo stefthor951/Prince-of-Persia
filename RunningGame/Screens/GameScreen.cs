@@ -24,7 +24,7 @@ namespace RunningGame.Screens
         int runCounter = 0, jumpCounter = 0, landCounter = 0, fallCounter = 0;
         bool jumping = false, landing = false, falling = false;
         public static bool inAir = true, reverseJump = false;
-
+        
         List<Platform> platformList = new List<Platform>();
         int platformSpacing, spawnSpacing = 175; //change back to 175
         string currentPlatformType, nextPlatformType;

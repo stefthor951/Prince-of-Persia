@@ -272,6 +272,15 @@
   <ItemGroup>
     <None Include="Resources\edited_joystick.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\joyStick.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

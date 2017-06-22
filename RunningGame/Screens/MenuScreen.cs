@@ -22,7 +22,7 @@ namespace RunningGame.Screens
             InitializeComponent();
 
             MoveSwords(startLabel);
-            
+
         }
 
         private void MenuScreen_Load(object sender, EventArgs e)
@@ -182,7 +182,7 @@ namespace RunningGame.Screens
 
             leftSwordPoint = new Point(l.Location.X - leftSword.Width - 5, 435);
             leftSword.Location = leftSwordPoint;
-            rightSwordPoint = new Point(l.Location.X + l.Width + 5, 435);
+            rightSwordPoint = new Point(l.Location.X + l.Width, 435);
             rightSword.Location = rightSwordPoint;
         }
     }
