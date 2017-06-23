@@ -13,6 +13,7 @@ namespace RunningGame.Classes
         public int x, y, initialY;
         public int width, height;
         int yChange, forwardSpeed = 5, reverseSpeed = 4, yAcceleration = 0;
+        bool onObstacle;
 
         List<Platform> platformList = new List<Platform>();
 
@@ -38,7 +39,27 @@ namespace RunningGame.Classes
             initialY = y;
             yAcceleration = 15;
         }
+        public bool ObstacleCollision(Obstacle o)
+        {
+            Rectangle playerRec = new Rectangle(x, y, width, height);
+            Rectangle obstacleRec = new Rectangle(o.x, o.y, o.xSize, o.ySize);
 
+            //The next two statements are to prevent the player from "colliding" with a box many times, this code should only run once per box.
+            if (playerRec.IntersectsWith(obstacleRec) && onObstacle == false) //If the player touches an obstacle (and isn't already intersecting with it)
+            {
+                onObstacle = true;
+                return (true);
+            }
+            else if (playerRec.IntersectsWith(obstacleRec) && onObstacle == true) //if the player touches an obstacle but has already interacted with it before
+            {
+                return (false);
+            }
+            else
+            {
+                onObstacle = false;
+                return (false);
+            }
+        }
         public bool PlatformCollision(Platform p)
         {
             Rectangle playerRec = new Rectangle(x, y, width + 1, height + 1); //the plus ones are so that the player touching but not intersecting with a platform will still run the following code
@@ -48,7 +69,7 @@ namespace RunningGame.Classes
             {
                 GameScreen.reverseJump = false;
                 //if the player is above the platform and between its left and right x coordinate and if the player is descending
-                if (y < p.y && x + (width / 2) > p.x && (x + (width / 2) < p.x + p.xSize) && yAcceleration <= 0) 
+                if (y < p.y && x + (width / 2) > p.x && (x + (width / 2) < p.x + p.xSize) && yAcceleration <= 0)
                 {
                     GameScreen.inAir = false;
                     GameScreen.platformYChange = 0;
@@ -59,7 +80,7 @@ namespace RunningGame.Classes
                     return (true);
                 }
                 else if (y > p.y && x > p.x && (x + width < p.x + p.ySize)) //if the player hits the bottom of a platform
-                { 
+                {
                     yAcceleration = 0;
                 }
                 else if (x < p.x) //if the player hits the left side of the platform
@@ -97,14 +118,11 @@ namespace RunningGame.Classes
             }
             if (GameScreen.inAir == true && GameScreen.reverseJump == false)
             {
-                //if (initialY - yChange > 50)
-                {
-                    y = initialY - yChange;
-                }
+                y = initialY - yChange;
                 yChange += yAcceleration;
                 yAcceleration--;
             }
-            else if (GameScreen.inAir == true && GameScreen.reverseJump == true)
+            else if (GameScreen.inAir == true && GameScreen.reverseJump == true) //by running this, the player will descend smoothly even if falling from a high platform to a lower one
             {
                 yAcceleration--;
             }

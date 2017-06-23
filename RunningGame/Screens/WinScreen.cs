@@ -7,26 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace RunningGame.Screens
 {
     public partial class WinScreen : UserControl
     {
         Boolean leftArrowDown, downArrowDown, rightArrowDown, upArrowDown, spaceDown;
-        
+
         string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         List<string> letterStrings = new List<string>();
-        string leftString, middleString, rightString;
+        string placeholder;
         int index;
+
+        SoundPlayer winMusic;
 
         List<Label> labelList = new List<Label>();
 
         private void WinScreen_Load(object sender, EventArgs e)
         {
-            scoreOutput.Text = "You ran " + Form1.currentScore + " metres!";
-            letterStrings.Add(leftString);
-            letterStrings.Add(middleString);
-            letterStrings.Add(rightString);
+            winMusic = new SoundPlayer(Properties.Resources.WinMusic);
+            winMusic.Play();
+            scoreOutput.Text = "You got " + Form1.currentScore + " points!";
+
+            MoveArrows(null);
+
+            letterStrings.Add(placeholder);
+            letterStrings.Add(placeholder);
+            letterStrings.Add(placeholder);
 
             labelList.Add(nameText1);
             labelList.Add(nameText2);
@@ -34,11 +42,6 @@ namespace RunningGame.Screens
         }
 
         int selected = 4, lastSelected;
-
-        private void WinScreen_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void WinScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -70,6 +73,16 @@ namespace RunningGame.Screens
                 case Keys.Space:
                     spaceDown = true;
                     break;
+                case Keys.Escape:
+                    //Form1.gameTheme.PlayLooping();
+
+                    Form form = this.FindForm();
+                    MenuScreen ms = new MenuScreen();
+                    form.Controls.Add(ms);
+                    form.Controls.Remove(this);
+
+                    ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
+                    break;
                 default:
                     break;
             }
@@ -100,33 +113,29 @@ namespace RunningGame.Screens
                 }
             }
 
-            #region logan's code -functional but bad
             switch (selected)
             {
                 case 0:
-
+                    MoveArrows(nameText1);
                     MoveSwords(null);
                     LetterShift(0);
                     break;
                 case 1:
-
+                    MoveArrows(nameText2);
                     MoveSwords(null);
                     LetterShift(1);
                     break;
                 case 2:
-
+                    MoveArrows(nameText3);
                     MoveSwords(null);
                     LetterShift(2);
                     break;
                 case 3:
-
+                    MoveArrows(null);
                     MoveSwords(menuLabel);
 
                     if (spaceDown == true)
                     {
-                        //play sound
-                        //Form1.select.Stop();
-                        //Form1.select.Play();
 
                         Highscore hs = new Highscore(nameText1.Text + nameText2.Text + nameText3.Text, Convert.ToString(Form1.currentScore));
                         hs.save(hs);
@@ -135,7 +144,7 @@ namespace RunningGame.Screens
                         // Goes to the game screen
 
                         Form form = this.FindForm();
-                        Screens.MenuScreen ms = new Screens.MenuScreen();
+                        MenuScreen ms = new MenuScreen();
 
                         ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
 
@@ -145,15 +154,13 @@ namespace RunningGame.Screens
                     break;
 
                 case 4:
-
+                    MoveArrows(null);
                     MoveSwords(restartLabel);
 
                     if (spaceDown == true)
                     {
-
-                        //play sound
-                        //Form1.select.Stop();
-                        //Form1.select.Play();
+                        winMusic.Stop();
+                        Form1.gameTheme.PlayLooping();
 
                         Highscore hs = new Highscore(nameText1.Text + nameText2.Text + nameText3.Text, Convert.ToString(Form1.currentScore));
 
@@ -172,25 +179,6 @@ namespace RunningGame.Screens
                     }
                     break;
             }
-
-            if (selected != lastSelected)
-            {
-                switch (lastSelected)
-                {
-                    case 0:
-                        nameText1.ForeColor = Color.White;
-                        break;
-
-                    case 1:
-                        nameText2.ForeColor = Color.White;
-                        break;
-
-                    case 2:
-                        nameText3.ForeColor = Color.White;
-                        break;
-                }
-            }
-            #endregion
         }
 
         private void WinScreen_KeyUp(object sender, KeyEventArgs e)
@@ -247,7 +235,6 @@ namespace RunningGame.Screens
                 letterStrings[i] = alphabet.Substring(index, 1);
                 labelList[i].Text = letterStrings[i];
             }
-            labelList[i].ForeColor = Color.Red;
         }
 
         public void MoveSwords(Label l)
@@ -264,10 +251,30 @@ namespace RunningGame.Screens
             }
             else
             {
-                leftSwordPoint = new Point(l.Location.X - leftSword.Width - 5, 337);
+                leftSwordPoint = new Point(l.Location.X - leftSword.Width - 5, l.Location.Y + ((l.Height - leftSword.Height) / 2));
                 leftSword.Location = leftSwordPoint;
-                rightSwordPoint = new Point(l.Location.X + l.Width + 5, 337);
+                rightSwordPoint = new Point(l.Location.X + l.Width + 5, l.Location.Y + ((l.Height - leftSword.Height) / 2));
                 rightSword.Location = rightSwordPoint;
+            }
+        }
+
+        public void MoveArrows(Label l)
+        {
+            Point topArrowPoint;
+            Point bottomArrowPoint;
+            if (l == null)
+            {
+                topArrowPoint = new Point(-100, 337);
+                topArrow.Location = topArrowPoint;
+                bottomArrowPoint = new Point(-100, 337);
+                bottomArrow.Location = bottomArrowPoint;
+            }
+            else
+            {
+                topArrowPoint = new Point(l.Location.X + 20, l.Location.Y - 20);
+                topArrow.Location = topArrowPoint;
+                bottomArrowPoint = new Point(l.Location.X + 20, l.Location.Y + l.Height); ;
+                bottomArrow.Location = bottomArrowPoint;
             }
         }
     }

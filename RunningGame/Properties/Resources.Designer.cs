@@ -73,6 +73,26 @@ namespace RunningGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_down {
+            get {
+                object obj = ResourceManager.GetObject("arrow_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_up {
+            get {
+                object obj = ResourceManager.GetObject("arrow_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buttonBlack {
             get {
                 object obj = ResourceManager.GetObject("buttonBlack", resourceCulture);
@@ -86,6 +106,36 @@ namespace RunningGame.Properties {
         internal static System.Drawing.Bitmap buttonGreen {
             get {
                 object obj = ResourceManager.GetObject("buttonGreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap crate {
+            get {
+                object obj = ResourceManager.GetObject("crate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dabbing_left {
+            get {
+                object obj = ResourceManager.GetObject("dabbing_left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dabbing_right {
+            get {
+                object obj = ResourceManager.GetObject("dabbing_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -261,6 +311,25 @@ namespace RunningGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream LoseMusic {
+            get {
+                return ResourceManager.GetStream("LoseMusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon project_icon {
+            get {
+                object obj = ResourceManager.GetObject("project_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap run1 {
@@ -366,6 +435,24 @@ namespace RunningGame.Properties {
         internal static System.IO.UnmanagedMemoryStream scream {
             get {
                 return ResourceManager.GetStream("scream", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Theme {
+            get {
+                return ResourceManager.GetStream("Theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream WinMusic {
+            get {
+                return ResourceManager.GetStream("WinMusic", resourceCulture);
             }
         }
     }

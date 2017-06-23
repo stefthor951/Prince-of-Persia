@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Highscore.cs" />
+    <Compile Include="Classes\Obstacle.cs" />
     <Compile Include="Classes\Platform.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Form1.cs">
@@ -87,12 +88,6 @@
     <Compile Include="Screens\MenuScreen.Designer.cs">
       <DependentUpon>MenuScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\PauseScreen.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Screens\PauseScreen.Designer.cs">
-      <DependentUpon>PauseScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Screens\WinScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -126,9 +121,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\MenuScreen.resx">
       <DependentUpon>MenuScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Screens\PauseScreen.resx">
-      <DependentUpon>PauseScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\WinScreen.resx">
       <DependentUpon>WinScreen.cs</DependentUpon>
@@ -225,45 +217,6 @@
     <None Include="Resources\Agrabah_cropped.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\blackfire1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\blackfire2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\blackfire3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\blackfire4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\blackfire5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\blackfire6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\redfire1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\redfire2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\redfire3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\redfire4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\redfire5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\redfire6.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\scream.wav" />
   </ItemGroup>
   <ItemGroup>
@@ -280,6 +233,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\joyStick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dabbing_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dabbing_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\project_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Theme.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WinMusic.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoseMusic.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crate.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -15,7 +15,7 @@ namespace RunningGame.Screens
 {
     public partial class GameScreen : UserControl
     {
-
+        //Variables relating to the player/the player's animations
         Player player;
         List<Image> runList = new List<Image>();
         List<Image> jumpList = new List<Image>();
@@ -24,7 +24,13 @@ namespace RunningGame.Screens
         int runCounter = 0, jumpCounter = 0, landCounter = 0, fallCounter = 0;
         bool jumping = false, landing = false, falling = false;
         public static bool inAir = true, reverseJump = false;
-        
+        int frameCount = 0;
+
+        //Obstacles
+        List<Obstacle> obstacleList = new List<Obstacle>();
+        List<PictureBox> obPicList = new List<PictureBox>();
+
+        //Platforms
         List<Platform> platformList = new List<Platform>();
         int platformSpacing, spawnSpacing = 175; //change back to 175
         string currentPlatformType, nextPlatformType;
@@ -32,11 +38,10 @@ namespace RunningGame.Screens
         int platformSpeed = 5;
         double unRoundedSpeed;
 
+        //miscellaneous variables
         Random randNum = new Random();
-        public static int yVelocity;
 
-        double difficultyScaler = 1;
-        int frameCount = 0;
+        double difficultyScaler = 1; //this gradually becomes bigger and acts as a multiplier for the speed of the platforms as well as the space between them
         int tickCount = 0;
         bool leftArrowDown, rightArrowDown, spaceDown;
         string currentDirection = null;
@@ -52,11 +57,11 @@ namespace RunningGame.Screens
 
         private void OnStart()
         {
+            //Set initial values
             Form1.currentScore = 0;
             Platform platform1 = new Platform(0, 155, 5, 1500, 250);
             platform1.initialY = platform1.y;
             player = new Player(240, platform1.y - playerPicture.Height, playerPicture.Width, playerPicture.Height);
-            //Platform platform1 = new Platform("start", this.Height);
             platformList.Add(platform1);
             Thread.Sleep(500);
             gameTimer.Enabled = true;
@@ -111,7 +116,7 @@ namespace RunningGame.Screens
                 case Keys.Right:
                     rightArrowDown = true;
                     break;
-                case Keys.Escape:
+                case Keys.Escape: //proceeds to the menu screen, 
                     gameTimer.Stop();
                     MenuScreen ms = new MenuScreen();
                     Form form = this.FindForm();
@@ -156,24 +161,23 @@ namespace RunningGame.Screens
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             tickCount++;
-            if (tickCount % 2 == 0)
+            if (tickCount % 2 == 0) //every other tick increase the score
             {
                 Form1.currentScore++;
-                scoreLabel.Text = "Score : " + Form1.currentScore + "m";
+                scoreLabel.Text = "Score : " + Form1.currentScore + " points";
             }
-            if (tickCount % 100 == 0 && platformSpeed < 10)
+
+            //the scaler will only increase to a certain point, but the speed/gap between platforms will continue to increase at a steady rate
+            if (tickCount % 100 == 0 && platformSpeed < 10) 
             {
                 difficultyScaler += 0.05;
             }
-            //if (player.y < 50)
-            //{
-            //    foreach (Platform p in platformList)
-            //    {
-            //        player.CameraPan(p);
-            //    }
-            //}
+
             PlayerMovement();
+
             #region platform movement and collision
+
+            //If the amount of empty space is greater than the set #, create a new platform
             platformSpacing = this.Width - (platformList[platformList.Count - 1].x + platformList[platformList.Count - 1].xSize);
             if (platformSpacing > spawnSpacing)
             {
@@ -208,6 +212,9 @@ namespace RunningGame.Screens
                 
             }
             #endregion
+
+            #region platform/obstacle "reverse jumping"
+            //Most of this code is fairly similar to the jump code for the player, but instead of the player jumping up, the platforms jump down
             if (reverseJump == true)
             {
                 platformYChange += platformYAcceleration;
@@ -217,6 +224,14 @@ namespace RunningGame.Screens
                 {
                     p.y = p.initialY + platformYChange;
 
+                    foreach (Obstacle o in obstacleList)
+                    {
+                        if (o.x > p.x && o.x + o.xSize < p.x + p.xSize) //if the obstacle is on the platform
+                        {
+                            o.y = p.y - o.ySize;
+                        }
+                    }
+
                     if (p.y <= p.initialY)
                     {
                         p.y = p.initialY;
@@ -224,6 +239,7 @@ namespace RunningGame.Screens
                     }
                 }
             }
+            #endregion
 
             foreach (Platform p in platformList)
             {
@@ -247,6 +263,45 @@ namespace RunningGame.Screens
                 }
             }
             #endregion
+            foreach (Obstacle o in obstacleList)
+            {
+                bool hitObstacle = player.ObstacleCollision(o);
+                
+                o.x -= platformSpeed;
+
+                if (hitObstacle == true)
+                {
+                    platformSpeed -= 4;
+                    o.xSize = 0;
+                    break;
+                }
+                if (o.x + o.ySize < 0) //ySize is intentional, as the ySize is the same as the picturebox, but the xSize might be 0 (to prevent the player from intersecting with the box a second time)
+                {
+                    obstacleList.Remove(o);
+                    break;
+                }
+            }
+            //draws / checks for collision for the obstacle pictures
+            foreach (PictureBox pBox in obPicList)
+            {
+                Point p = new Point(pBox.Location.X - platformSpeed, pBox.Location.Y);
+                pBox.Location = p;
+                if (pBox.Location.X + pBox.Width < 0)
+                {
+                    obPicList.Remove(pBox);
+                    break;
+                }
+
+                foreach (Obstacle o in obstacleList)
+                {
+                    if (pBox.Location.X == o.x) //if the picturebox corresponds with the obstacle
+                    {
+                        Point point = new Point(o.x, o.y); //this will keep the picture/ actual obstacle in sync
+                        pBox.Location = point;
+                    }
+                }
+            }
+
             Refresh();
         }
 
@@ -366,8 +421,9 @@ namespace RunningGame.Screens
                 }
                 jumping = true;
             }
-            if (inAir == true && jumping == false)
+            if (inAir == true && jumping == false && falling == false)
             {
+                player.initialY = player.y;
                 falling = true;
             }
             if (leftArrowDown && rightArrowDown == false)
@@ -420,49 +476,68 @@ namespace RunningGame.Screens
         private void CreatePlatform()
         {
             int num;
+            Platform p = new Platform(null, 0);
             if (currentPlatformType == "low" || nextPlatformType == "low")
             {
                 num = randNum.Next(0, 2);
                 if (num == 0)
                 {
-                    Platform p = new Platform("middle", this.Height);
+                    p = new Platform("middle", this.Height);
                     nextPlatformType = "middle";
-                    p.speed = platformSpeed;
-                    platformList.Add(p);
+                    
                 }
-                else if (num == 2)
+                else if (num == 1)
                 {
-                    Platform p = new Platform("low", this.Height);
+                    p = new Platform("low", this.Height);
                     nextPlatformType = "low";
-                    p.speed = platformSpeed;
-                    platformList.Add(p);
                 }
             }
             else
             {
                 num = randNum.Next(0, 3);
+
                 if (num == 0)
                 {
-                    Platform p = new Platform("high", this.Height);
+                    p = new Platform("high", this.Height);
                     nextPlatformType = "high";
-                    p.speed = platformSpeed;
-                    platformList.Add(p);
                 }
                 else if (num == 1)
                 {
-                    Platform p = new Platform("middle", this.Height);
+                    p = new Platform("middle", this.Height);
                     nextPlatformType = "middle";
-                    p.speed = platformSpeed;
-                    platformList.Add(p);
                 }
                 else if (num == 2)
                 {
-                    Platform p = new Platform("low", this.Height);
+                    p = new Platform("low", this.Height);
                     nextPlatformType = "low";
-                    p.speed = platformSpeed;
-                    platformList.Add(p);
                 }
             }
+
+            p.speed = platformSpeed;
+            platformList.Add(p);
+
+            #region spawning obstacles
+            //this bit is for spawning obstacles on the platforms
+            num = randNum.Next(1, 11);
+            if (num <= 5) //50% chance to spawn an obstacle on a platform
+            {
+                num = randNum.Next(p.x + 100, p.x + p.xSize - 100); //can be placed anywhere on the platform, but not too close to the edge
+                Obstacle o = new Obstacle(num, p.y - 50);
+                obstacleList.Add(o);
+
+                //creates a picture box in order to show the obstacle onscreen
+                PictureBox pBox = new PictureBox();
+                Point point = new Point(o.x, o.y);
+                pBox.Location = point;
+                pBox.Width = o.xSize; //this is intentional, as the only time the x and y size will be different is after the player collides with an obstacle, thus the crate won't disappear but also will not intersect with the player again.
+                pBox.Height = o.ySize;
+                pBox.BackgroundImage = Properties.Resources.crate;
+                pBox.BackColor = Color.Transparent;
+                pBox.BackgroundImageLayout = ImageLayout.Stretch;
+                this.Controls.Add(pBox);
+                obPicList.Add(pBox);
+            }
+            #endregion
         }
     }
 }

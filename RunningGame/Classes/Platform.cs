@@ -10,10 +10,9 @@ namespace RunningGame.Classes
     {
         public int x, y, speed, xSize, ySize, initialY, counter = 0, yChange = 0, yAcceleration;
         public string type;
-        bool reverseJump = false;
         int platformWidth = 1000;
 
-        public Platform(int _x, int _y, int _speed, int _xSize, int _ySize)
+        public Platform(int _x, int _y, int _speed, int _xSize, int _ySize) //this method is only really used for the first platform
         {
             x = _x;
             y = _y;
@@ -29,12 +28,6 @@ namespace RunningGame.Classes
             x = 1000;
             speed = 5;
             xSize = platformWidth;
-            if (type == "start")
-            {
-                x = 0;
-                y = 300;
-                ySize = screenHeight - y;
-            }
             if (type == "high")
             {
                 y = 150;
@@ -60,7 +53,6 @@ namespace RunningGame.Classes
 
         public void ReverseJump()
         {
-            reverseJump = true;
             yAcceleration = 15;
         }
     }

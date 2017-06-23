@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace RunningGame.Screens
 {
@@ -14,7 +15,7 @@ namespace RunningGame.Screens
     {
         int index = 0;
         bool leftKeyDown, rightKeyDown, choiceChanged = false;
-        Graphics g;
+        SoundPlayer loseMusic;
 
         public LoseScreen()
         {
@@ -26,11 +27,14 @@ namespace RunningGame.Screens
 
         private void LoseScreen_Load(object sender, EventArgs e)
         {
+            loseMusic = new SoundPlayer(Properties.Resources.LoseMusic);
+            loseMusic.Play();
+
             Graphics g = this.CreateGraphics();
             SolidBrush brush = new SolidBrush(Color.DimGray);
             g.FillEllipse(brush, losePicture.Location.X - 50, losePicture.Location.Y + (losePicture.Height - 25), losePicture.Location.X + losePicture.Width + 50, losePicture.Location.Y + (losePicture.Height + 25));
 
-            scoreLabel.Text = "You ran " + Form1.currentScore + " metres";
+            scoreLabel.Text = "You got " + Form1.currentScore + " points";
             Point labelPoint = new Point(this.Width / 2 - (scoreLabel.Width / 2), scoreLabel.Location.Y);
             scoreLabel.Location = labelPoint;
         }
@@ -84,6 +88,8 @@ namespace RunningGame.Screens
 
                 case Keys.Escape:
                     //MenuScreen ms = new MenuScreen();
+                    loseMusic.Stop();
+                    Form1.gameTheme.PlayLooping();
 
                     form.Controls.Add(ms);
                     form.Controls.Remove(this);
@@ -97,6 +103,8 @@ namespace RunningGame.Screens
                     {
                         //If the restart button is selected
                         case 0:
+                            loseMusic.Stop();
+                            Form1.gameTheme.PlayLooping();
 
                             GameScreen gs = new GameScreen();
                             gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
@@ -110,6 +118,8 @@ namespace RunningGame.Screens
                         case 1:
 
                             //MenuScreen ms = new MenuScreen();
+
+                            Form1.gameTheme.PlayLooping();
 
                             form.Controls.Add(ms);
                             form.Controls.Remove(this);
@@ -145,9 +155,9 @@ namespace RunningGame.Screens
             Point leftSwordPoint;
             Point rightSwordPoint;
 
-            leftSwordPoint = new Point(l.Location.X - leftSword.Width - 5, 435);
+            leftSwordPoint = new Point(l.Location.X - leftSword.Width - 5, l.Location.Y + ((l.Height - leftSword.Height) / 2));
             leftSword.Location = leftSwordPoint;
-            rightSwordPoint = new Point(l.Location.X + l.Width + 5, 435);
+            rightSwordPoint = new Point(l.Location.X + l.Width + 5, l.Location.Y + ((l.Height - leftSword.Height) / 2));
             rightSword.Location = rightSwordPoint;
         }
 

@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Created by Stefan Thorburn
+//June 2017
+//Simple endless running game
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,13 +12,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Media;
 
 namespace RunningGame
 {
     public partial class Form1 : Form
     {
+
         public static List<Highscore> highscoreList = new List<Highscore>();
         public static int currentScore;
+        public static SoundPlayer gameTheme = new SoundPlayer(Properties.Resources.Theme);
 
         public Form1()
         {
@@ -26,6 +32,9 @@ namespace RunningGame
         {
             MenuScreen ms = new MenuScreen();
             this.Controls.Add(ms);
+
+            gameTheme.PlayLooping();
+
 
             //attempts to load all saved highscores
             try

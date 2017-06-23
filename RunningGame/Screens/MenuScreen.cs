@@ -14,8 +14,6 @@ namespace RunningGame.Screens
     {
         int index = 0;
         bool leftKeyDown, rightKeyDown, choiceChanged = false;
-        //List<Image> redFireList = new List<Image>();
-        //List<Image> blackFireList = new List<Image>();
 
         public MenuScreen()
         {
@@ -23,25 +21,6 @@ namespace RunningGame.Screens
 
             MoveSwords(startLabel);
 
-        }
-
-        private void MenuScreen_Load(object sender, EventArgs e)
-        {
-            //redFireList.Add(Properties.Resources.pot);
-            //redFireList.Add(Properties.Resources.redfire1);
-            //redFireList.Add(Properties.Resources.redfire2);
-            //redFireList.Add(Properties.Resources.redfire3);
-            //redFireList.Add(Properties.Resources.redfire4);
-            //redFireList.Add(Properties.Resources.redfire5);
-            //redFireList.Add(Properties.Resources.redfire6);
-
-            //blackFireList.Add(Properties.Resources.pot);
-            //blackFireList.Add(Properties.Resources.blackfire1);
-            //blackFireList.Add(Properties.Resources.blackfire2);
-            //blackFireList.Add(Properties.Resources.blackfire3);
-            //blackFireList.Add(Properties.Resources.blackfire4);
-            //blackFireList.Add(Properties.Resources.blackfire5);
-            //blackFireList.Add(Properties.Resources.blackfire6);
         }
 
         private void MenuScreen_KeyUp(object sender, KeyEventArgs e)
@@ -141,7 +120,7 @@ namespace RunningGame.Screens
                     break;
             }
 
-            //set selected button to red
+            //Move the sword pictures to the correct label
             switch (index)
             {
                 case 0:
@@ -175,14 +154,15 @@ namespace RunningGame.Screens
             }
         }
 
+        //Generic method for placing the swords around a label
         public void MoveSwords(Label l)
         {
             Point leftSwordPoint;
             Point rightSwordPoint;
 
-            leftSwordPoint = new Point(l.Location.X - leftSword.Width - 5, 435);
+            leftSwordPoint = new Point(l.Location.X - leftSword.Width - 5, l.Location.Y + ((l.Height - leftSword.Height) / 2) + 3);
             leftSword.Location = leftSwordPoint;
-            rightSwordPoint = new Point(l.Location.X + l.Width, 435);
+            rightSwordPoint = new Point(l.Location.X + l.Width, l.Location.Y + ((l.Height - leftSword.Height) / 2) + 3);
             rightSword.Location = rightSwordPoint;
         }
     }

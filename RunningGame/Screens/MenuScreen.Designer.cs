@@ -33,12 +33,13 @@
             this.highscoreLabel = new System.Windows.Forms.Label();
             this.exitLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rightSword = new System.Windows.Forms.PictureBox();
             this.leftSword = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightSword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.leftSword)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // startLabel
@@ -46,7 +47,7 @@
             this.startLabel.BackColor = System.Drawing.Color.Transparent;
             this.startLabel.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startLabel.ForeColor = System.Drawing.Color.DarkGray;
-            this.startLabel.Location = new System.Drawing.Point(78, 423);
+            this.startLabel.Location = new System.Drawing.Point(52, 421);
             this.startLabel.Name = "startLabel";
             this.startLabel.Size = new System.Drawing.Size(128, 36);
             this.startLabel.TabIndex = 0;
@@ -57,7 +58,7 @@
             this.instructionLabel.BackColor = System.Drawing.Color.Transparent;
             this.instructionLabel.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.instructionLabel.ForeColor = System.Drawing.Color.DarkGray;
-            this.instructionLabel.Location = new System.Drawing.Point(260, 423);
+            this.instructionLabel.Location = new System.Drawing.Point(259, 422);
             this.instructionLabel.Name = "instructionLabel";
             this.instructionLabel.Size = new System.Drawing.Size(196, 35);
             this.instructionLabel.TabIndex = 1;
@@ -68,7 +69,7 @@
             this.highscoreLabel.BackColor = System.Drawing.Color.Transparent;
             this.highscoreLabel.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highscoreLabel.ForeColor = System.Drawing.Color.DarkGray;
-            this.highscoreLabel.Location = new System.Drawing.Point(525, 423);
+            this.highscoreLabel.Location = new System.Drawing.Point(534, 421);
             this.highscoreLabel.Name = "highscoreLabel";
             this.highscoreLabel.Size = new System.Drawing.Size(230, 36);
             this.highscoreLabel.TabIndex = 2;
@@ -79,7 +80,7 @@
             this.exitLabel.BackColor = System.Drawing.Color.Transparent;
             this.exitLabel.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitLabel.ForeColor = System.Drawing.Color.DarkGray;
-            this.exitLabel.Location = new System.Drawing.Point(830, 423);
+            this.exitLabel.Location = new System.Drawing.Point(843, 422);
             this.exitLabel.Name = "exitLabel";
             this.exitLabel.Size = new System.Drawing.Size(97, 35);
             this.exitLabel.TabIndex = 3;
@@ -91,11 +92,32 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe Script", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label1.Location = new System.Drawing.Point(200, 50);
+            this.label1.Location = new System.Drawing.Point(200, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(601, 106);
             this.label1.TabIndex = 6;
             this.label1.Text = "Prince of Persia";
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe Print", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.label2.Location = new System.Drawing.Point(313, 102);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(375, 56);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Escape from Agrabah";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::RunningGame.Properties.Resources.Agrabah_cropped;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(200, 159);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(600, 240);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
             // rightSword
             // 
@@ -119,16 +141,6 @@
             this.leftSword.TabIndex = 4;
             this.leftSword.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::RunningGame.Properties.Resources.Agrabah_cropped;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(200, 159);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(600, 240);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
             // MenuScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,6 +148,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rightSword);
             this.Controls.Add(this.leftSword);
@@ -145,12 +158,11 @@
             this.Controls.Add(this.startLabel);
             this.Name = "MenuScreen";
             this.Size = new System.Drawing.Size(1000, 500);
-            this.Load += new System.EventHandler(this.MenuScreen_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MenuScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.MenuScreen_PreviewKeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightSword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.leftSword)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,5 +178,6 @@
         private System.Windows.Forms.PictureBox rightSword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
     }
 }

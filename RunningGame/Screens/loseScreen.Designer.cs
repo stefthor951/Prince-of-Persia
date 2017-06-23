@@ -44,11 +44,11 @@
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Font = new System.Drawing.Font("Segoe Print", 27.75F, System.Drawing.FontStyle.Bold);
             this.titleLabel.ForeColor = System.Drawing.Color.Red;
-            this.titleLabel.Location = new System.Drawing.Point(342, 20);
+            this.titleLabel.Location = new System.Drawing.Point(386, 20);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(317, 81);
+            this.titleLabel.Size = new System.Drawing.Size(229, 65);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "YOU LOSE";
             // 
@@ -66,22 +66,22 @@
             // restartLabel
             // 
             this.restartLabel.AutoSize = true;
-            this.restartLabel.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.restartLabel.ForeColor = System.Drawing.Color.Gold;
+            this.restartLabel.Font = new System.Drawing.Font("Segoe Script", 21.75F);
+            this.restartLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.restartLabel.Location = new System.Drawing.Point(176, 304);
             this.restartLabel.Name = "restartLabel";
-            this.restartLabel.Size = new System.Drawing.Size(194, 44);
+            this.restartLabel.Size = new System.Drawing.Size(169, 46);
             this.restartLabel.TabIndex = 2;
             this.restartLabel.Text = "RESTART";
             // 
             // menuLabel
             // 
             this.menuLabel.AutoSize = true;
-            this.menuLabel.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuLabel.ForeColor = System.Drawing.Color.Gold;
+            this.menuLabel.Font = new System.Drawing.Font("Segoe Script", 21.75F);
+            this.menuLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.menuLabel.Location = new System.Drawing.Point(591, 304);
             this.menuLabel.Name = "menuLabel";
-            this.menuLabel.Size = new System.Drawing.Size(234, 44);
+            this.menuLabel.Size = new System.Drawing.Size(214, 46);
             this.menuLabel.TabIndex = 3;
             this.menuLabel.Text = "MAIN MENU";
             // 

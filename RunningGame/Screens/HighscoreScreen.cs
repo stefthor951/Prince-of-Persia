@@ -23,12 +23,15 @@ namespace RunningGame.Screens
             //outputs highscores in format: (Position). NAME score 
             for (int i = 0; i < Form1.highscoreList.Count; i++)
             {
+                //Put the first 5 scores on the left label
                 if (i < 5)
                 {
                     top5Output.Text += (i + 1) + ".  " + Form1.highscoreList[i].name + " " + Form1.highscoreList[i].score + "\n";
                 }
+                //Put the next 5 on the right label
                 else if (i >= 5 && i < 10)
                 {
+                    //for the tenth score remove a space, this will keep it lined up with the other scores
                     if ((i + 1) == 10)
                     {
                         next5Output.Text += (i + 1) + ". " + Form1.highscoreList[i].name + " " + Form1.highscoreList[i].score + "\n";
